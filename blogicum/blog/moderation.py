@@ -14,10 +14,9 @@ MODEL_NAME = 'cointegrated/rubert-tiny-toxicity'
 @cache
 def _load_model():
     """Лениво загрузить токенизатор и модель (один раз на процесс)."""
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
     model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
     model.eval()
-    return tokenizer, model
+    return AutoTokenizer.from_pretrained(MODEL_NAME), model
 
 
 def get_toxicity_score(text: str) -> float:
