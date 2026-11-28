@@ -24,7 +24,7 @@ def profile_view(request, username):
     posts = profile.posts
     if request.user != profile:
         posts = posts.available()
-    posts = posts.with_relations().with_comments_count().order_by('-pub_date')
+    posts = posts.with_relations().with_comments_count()
 
     page_obj = paginate(request, posts)
 
